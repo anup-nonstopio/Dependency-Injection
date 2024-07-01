@@ -1,7 +1,7 @@
 // Simulating file upload service to learn dependency injection in TypeScript
 import express from 'express';
 import { port } from '../server';
-import { fileController } from './file.controller';
+import { fileController } from './controllers/file.controller';
 
 const app = express();
 
