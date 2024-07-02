@@ -7,6 +7,17 @@ interface Uploader {
     upload: (filename: string) => Promise<string>;
 }
 
+export class fileController {
+    constructor(private uploader: Uploader) {}
+    
+    upload = async (req: Request, res: Response) => {
+        // upload the file to s3 bucket
+        this.uploader.upload('file.txt');
+        res.json({ message: 'File uploaded successfully' });
+    }
+}
+
+/*
 export const fileController = {
     upload: async (req: Request, res: Response, { uploader }: { uploader: Uploader}) => { 
         // upload the file to s3 bucket
@@ -19,3 +30,4 @@ export const fileController = {
         res.json({ message: 'File uploaded successfully' });
     },
 }
+*/

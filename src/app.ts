@@ -7,7 +7,10 @@ import { s3Uploader } from './uploaders/s3.uploader';
 const app = express();
 
 // Simulating file upload service
-app.get('/file-upload', (req, res) => fileController.upload(req, res, { uploader: s3Uploader }));
+app.get('/file-upload', (req, res) => {
+    // fileController.upload(req, res, { uploader: s3Uploader });
+    new fileController(s3Uploader).upload(req, res);
+});
 
 app.get('/', (req, res) => {
     res.json({ message: `Please go to http://localhost:${port}/file-upload` });
